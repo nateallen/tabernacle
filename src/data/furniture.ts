@@ -28,7 +28,7 @@ export const tabernacleItems: TabernacleFurniture[] = [
     modelSrc: "/models/ark-of-the-covenant.glb",
     posterSrc: "/models/ark-of-the-covenant-poster.webp",
     available: true,
-    arScale: 0.01, // Model is in large units, scale down significantly
+    arScale: 0.005, // Halved from 0.01 - targeting ~3.75 feet long
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold rings", "Carrying poles"],
       dimensions: "2.5 cubits long × 1.5 cubits wide × 1.5 cubits high (~3.75 × 2.25 × 2.25 feet)",
