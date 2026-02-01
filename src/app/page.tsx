@@ -1,65 +1,114 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import { tabernacleItems, getItemById } from "@/data/furniture";
+import FurnitureSelector from "@/components/FurnitureSelector";
+import InfoPanel from "@/components/InfoPanel";
+
+// Dynamically import ARViewer to avoid SSR issues with model-viewer
+const ARViewer = dynamic(() => import("@/components/ARViewer"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[500px] md:h-[600px] bg-gradient-to-b from-amber-50 to-amber-100 rounded-2xl flex items-center justify-center">
+      <div className="animate-pulse text-amber-600">Loading 3D viewer...</div>
+    </div>
+  ),
+});
 
 export default function Home() {
+  const [selectedId, setSelectedId] = useState("ark-of-the-covenant");
+  const selectedItem = getItemById(selectedId) || tabernacleItems[0];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-amber-50">
+      {/* Header */}
+      <header className="bg-amber-800 text-white py-6 px-4 shadow-lg">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-3xl font-bold">Tabernacle AR</h1>
+          <p className="text-amber-200 mt-1">
+            Explore the sacred furniture of the biblical tabernacle in augmented reality
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-4 py-8">
+        {/* Furniture Selector */}
+        <div className="mb-6">
+          <FurnitureSelector
+            items={tabernacleItems}
+            selectedId={selectedId}
+            onSelect={setSelectedId}
+          />
+        </div>
+
+        {/* AR Viewer and Info Panel */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* AR Viewer - Takes 2/3 on large screens */}
+          <div className="lg:col-span-2">
+            {selectedItem.available ? (
+              <ARViewer
+                modelSrc={selectedItem.modelSrc}
+                modelAlt={selectedItem.name}
+                poster={selectedItem.posterSrc}
+              />
+            ) : (
+              <div className="w-full h-[500px] md:h-[600px] bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl flex flex-col items-center justify-center text-gray-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-16 w-16 mb-4 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                  />
+                </svg>
+                <p className="text-lg font-medium">3D Model Coming Soon</p>
+                <p className="text-sm mt-1">
+                  The {selectedItem.name} model is currently in development
+                </p>
+              </div>
+            )}
+
+            {/* AR Instructions */}
+            <div className="mt-4 bg-amber-50 rounded-xl p-4 border border-amber-200">
+              <h3 className="font-semibold text-amber-800 mb-2">How to View in AR</h3>
+              <ol className="text-sm text-amber-700 space-y-1 list-decimal list-inside">
+                <li>Rotate and zoom the 3D model to explore it</li>
+                <li>Tap &quot;View in Your Space&quot; to launch AR mode</li>
+                <li>Point your camera at a flat surface (floor or table)</li>
+                <li>Tap to place the object and walk around it</li>
+              </ol>
+              <p className="text-xs text-amber-600 mt-2">
+                Works on iOS Safari and Android Chrome. For best experience, use a well-lit room.
+              </p>
+            </div>
+          </div>
+
+          {/* Info Panel - Takes 1/3 on large screens */}
+          <div className="lg:col-span-1">
+            <InfoPanel item={selectedItem} />
+          </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-amber-900 text-amber-200 py-6 px-4 mt-12">
+        <div className="max-w-6xl mx-auto text-center text-sm">
+          <p>
+            Explore the tabernacle as described in the Book of Exodus
+          </p>
+          <p className="mt-2 text-amber-400">
+            Built with Next.js and Model-Viewer
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

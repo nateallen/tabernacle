@@ -1,0 +1,79 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+interface ARViewerProps {
+  modelSrc: string;
+  modelAlt: string;
+  poster?: string;
+}
+
+export default function ARViewer({ modelSrc, modelAlt, poster }: ARViewerProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const initialized = useRef(false);
+
+  useEffect(() => {
+    // Dynamically import model-viewer (client-side only)
+    if (!initialized.current) {
+      import("@google/model-viewer");
+      initialized.current = true;
+    }
+  }, []);
+
+  return (
+    <div className="relative w-full h-[500px] md:h-[600px] bg-gradient-to-b from-amber-50 to-amber-100 rounded-2xl overflow-hidden shadow-xl">
+      <div
+        ref={containerRef}
+        className="w-full h-full"
+        dangerouslySetInnerHTML={{
+          __html: `
+            <model-viewer
+              src="${modelSrc}"
+              alt="${modelAlt}"
+              ar
+              ar-modes="webxr scene-viewer quick-look"
+              camera-controls
+              touch-action="pan-y"
+              shadow-intensity="1"
+              shadow-softness="1"
+              auto-rotate
+              ${poster ? `poster="${poster}"` : ""}
+              loading="eager"
+              environment-image="neutral"
+              exposure="1"
+              style="width: 100%; height: 100%; background-color: transparent;"
+            >
+              <button
+                slot="ar-button"
+                style="
+                  position: absolute;
+                  bottom: 16px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  background-color: #d97706;
+                  color: white;
+                  font-weight: 600;
+                  padding: 12px 24px;
+                  border-radius: 9999px;
+                  border: none;
+                  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 14px;
+                "
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                </svg>
+                View in Your Space
+              </button>
+            </model-viewer>
+          `,
+        }}
+      />
+    </div>
+  );
+}
