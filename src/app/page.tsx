@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { tabernacleItems, getItemById } from "@/data/furniture";
 import FurnitureSelector from "@/components/FurnitureSelector";
 import InfoPanel from "@/components/InfoPanel";
+import { Button } from "@/components/ui/button";
 
 // Dynamically import ARViewer to avoid SSR issues with model-viewer
 const ARViewer = dynamic(() => import("@/components/ARViewer"), {
@@ -18,7 +19,18 @@ const ARViewer = dynamic(() => import("@/components/ARViewer"), {
 
 export default function Home() {
   const [selectedId, setSelectedId] = useState("ark-of-the-covenant");
+  const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
   const selectedItem = getItemById(selectedId) || tabernacleItems[0];
+
+  // Reset variant when item changes
+  useEffect(() => {
+    setSelectedVariantId(null);
+  }, [selectedId]);
+
+  // Get the current model source and scale (from variant or base item)
+  const selectedVariant = selectedItem.variants?.find(v => v.id === selectedVariantId);
+  const currentModelSrc = selectedVariant?.modelSrc || selectedItem.modelSrc;
+  const currentScale = selectedVariant?.arScale ?? selectedItem.arScale;
 
   return (
     <div className="min-h-screen bg-background">
@@ -48,12 +60,33 @@ export default function Home() {
           {/* AR Viewer - Takes 2/3 on large screens */}
           <div className="lg:col-span-2">
             {selectedItem.available ? (
-              <ARViewer
-                modelSrc={selectedItem.modelSrc}
-                modelAlt={selectedItem.name}
-                poster={selectedItem.posterSrc}
-                scale={selectedItem.arScale}
-              />
+              <>
+                <ARViewer
+                  modelSrc={currentModelSrc}
+                  modelAlt={selectedItem.name}
+                  poster={selectedItem.posterSrc}
+                  scale={currentScale}
+                />
+
+                {/* Variant Selector */}
+                {selectedItem.variants && selectedItem.variants.length > 1 && (
+                  <div className="mt-4 flex items-center gap-2">
+                    <span className="text-sm text-muted-foreground">Model version:</span>
+                    <div className="flex gap-2">
+                      {selectedItem.variants.map((variant) => (
+                        <Button
+                          key={variant.id}
+                          size="sm"
+                          variant={selectedVariantId === variant.id || (!selectedVariantId && variant.id === "v1") ? "default" : "secondary"}
+                          onClick={() => setSelectedVariantId(variant.id)}
+                        >
+                          {variant.name}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
             ) : (
               <div className="w-full h-[500px] md:h-[600px] bg-secondary rounded-2xl flex flex-col items-center justify-center text-muted-foreground">
                 <svg

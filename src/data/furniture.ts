@@ -1,3 +1,10 @@
+export interface ModelVariant {
+  id: string;
+  name: string;
+  modelSrc: string;
+  arScale?: number;
+}
+
 export interface TabernacleFurniture {
   id: string;
   name: string;
@@ -9,6 +16,8 @@ export interface TabernacleFurniture {
   available: boolean;
   /** Scale multiplier for AR display (adjusts real-world size) */
   arScale?: number;
+  /** Alternative model versions */
+  variants?: ModelVariant[];
   details: {
     materials: string[];
     dimensions?: string;
@@ -80,6 +89,10 @@ export const tabernacleItems: TabernacleFurniture[] = [
     modelSrc: "/models/golden-candlestick.glb",
     available: true,
     arScale: 0.85,
+    variants: [
+      { id: "v1", name: "Version 1", modelSrc: "/models/golden-candlestick.glb", arScale: 0.85 },
+      { id: "v2", name: "Version 2", modelSrc: "/models/golden-candlestick-2.glb", arScale: 0.85 },
+    ],
     details: {
       materials: ["Pure gold (one talent, ~75 pounds)"],
       dimensions: "Not specified; decorated with almond blossoms, buds, and flowers",
