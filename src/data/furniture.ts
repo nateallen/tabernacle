@@ -79,7 +79,7 @@ export const tabernacleItems: TabernacleFurniture[] = [
     biblicalReference: "Exodus 25:31-40",
     modelSrc: "/models/golden-candlestick.glb",
     available: true,
-    arScale: 1.0, // 20x larger (was 0.05)
+    arScale: 0.85,
     details: {
       materials: ["Pure gold (one talent, ~75 pounds)"],
       dimensions: "Not specified; decorated with almond blossoms, buds, and flowers",
