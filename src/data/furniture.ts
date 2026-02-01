@@ -40,7 +40,7 @@ export const tabernacleItems: TabernacleFurniture[] = [
     arScale: 0.0064,
     variants: [
       { id: "v1", name: "Version 1", modelSrc: "/models/ark-of-the-covenant.glb", arScale: 0.0064 },
-      { id: "v2", name: "Version 2", modelSrc: "/models/ark-of-the-covenant-2.glb", arScale: 0.0064 },
+      { id: "v2", name: "Version 2", modelSrc: "/models/ark-of-the-covenant-2.glb", arScale: 0.85 },
     ],
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold rings", "Carrying poles"],
