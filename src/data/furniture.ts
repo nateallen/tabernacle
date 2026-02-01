@@ -77,8 +77,9 @@ export const tabernacleItems: TabernacleFurniture[] = [
     description:
       "The seven-branched menorah that provided light in the Holy Place, beaten from a single piece of gold.",
     biblicalReference: "Exodus 25:31-40",
-    modelSrc: "/models/golden-lampstand.glb",
-    available: false,
+    modelSrc: "/models/golden-candlestick.glb",
+    available: true,
+    arScale: 0.0064, // Same starting scale as Ark, adjust as needed
     details: {
       materials: ["Pure gold (one talent, ~75 pounds)"],
       dimensions: "Not specified; decorated with almond blossoms, buds, and flowers",
