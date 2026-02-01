@@ -61,9 +61,9 @@ export default function ARViewer({
                 loading="eager"
                 environment-image="neutral"
                 exposure="1"
-                min-camera-orbit="auto auto 1m"
-                max-camera-orbit="auto auto 10m"
-                camera-orbit="0deg 75deg 3m"
+                min-camera-orbit="auto auto auto"
+                max-camera-orbit="auto auto auto"
+                camera-orbit="0deg 75deg 105%"
                 style="width: 100%; height: 100%; background-color: transparent;"
               >
                 <button
