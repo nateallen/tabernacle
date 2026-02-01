@@ -38,7 +38,7 @@ export default function ARViewer({
         type="module"
         onLoad={() => setScriptLoaded(true)}
       />
-      <div className="relative w-full h-[500px] md:h-[600px] bg-gradient-to-b from-amber-50 to-amber-100 rounded-2xl overflow-hidden shadow-xl">
+      <div className="relative w-full h-[500px] md:h-[600px] bg-gradient-to-b from-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-700">
         <div
           ref={containerRef}
           className="w-full h-full"
@@ -73,13 +73,13 @@ export default function ARViewer({
                     bottom: 16px;
                     left: 50%;
                     transform: translateX(-50%);
-                    background-color: #d97706;
+                    background-color: #5b8def;
                     color: white;
                     font-weight: 600;
                     padding: 12px 24px;
                     border-radius: 9999px;
                     border: none;
-                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
                     cursor: pointer;
                     display: flex;
                     align-items: center;
@@ -99,7 +99,7 @@ export default function ARViewer({
         />
         {!scriptLoaded && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="animate-pulse text-amber-600">Loading 3D viewer...</div>
+            <div className="animate-pulse text-blue-400">Loading 3D viewer...</div>
           </div>
         )}
       </div>

@@ -10,8 +10,8 @@ import InfoPanel from "@/components/InfoPanel";
 const ARViewer = dynamic(() => import("@/components/ARViewer"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[500px] md:h-[600px] bg-gradient-to-b from-amber-50 to-amber-100 rounded-2xl flex items-center justify-center">
-      <div className="animate-pulse text-amber-600">Loading 3D viewer...</div>
+    <div className="w-full h-[500px] md:h-[600px] bg-secondary rounded-2xl flex items-center justify-center">
+      <div className="animate-pulse text-primary">Loading 3D viewer...</div>
     </div>
   ),
 });
@@ -21,12 +21,12 @@ export default function Home() {
   const selectedItem = getItemById(selectedId) || tabernacleItems[0];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-amber-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-amber-800 text-white py-6 px-4 shadow-lg">
+      <header className="bg-secondary/50 backdrop-blur-sm border-b border-border py-6 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl font-bold">Tabernacle AR</h1>
-          <p className="text-amber-200 mt-1">
+          <h1 className="text-3xl font-bold text-foreground">Tabernacle AR</h1>
+          <p className="text-muted-foreground mt-1">
             Explore the sacred furniture of the biblical tabernacle in augmented reality
           </p>
         </div>
@@ -55,10 +55,10 @@ export default function Home() {
                 scale={selectedItem.arScale}
               />
             ) : (
-              <div className="w-full h-[500px] md:h-[600px] bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl flex flex-col items-center justify-center text-gray-500">
+              <div className="w-full h-[500px] md:h-[600px] bg-secondary rounded-2xl flex flex-col items-center justify-center text-muted-foreground">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-16 w-16 mb-4 text-gray-400"
+                  className="h-16 w-16 mb-4 text-muted-foreground/50"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -78,15 +78,15 @@ export default function Home() {
             )}
 
             {/* AR Instructions */}
-            <div className="mt-4 bg-amber-50 rounded-xl p-4 border border-amber-200">
-              <h3 className="font-semibold text-amber-800 mb-2">How to View in AR</h3>
-              <ol className="text-sm text-amber-700 space-y-1 list-decimal list-inside">
+            <div className="mt-4 bg-secondary/50 rounded-xl p-4 border border-border">
+              <h3 className="font-semibold text-foreground mb-2">How to View in AR</h3>
+              <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
                 <li>Rotate and zoom the 3D model to explore it</li>
                 <li>Tap &quot;View in Your Space&quot; to launch AR mode</li>
                 <li>Point your camera at a flat surface (floor or table)</li>
                 <li>Tap to place the object and walk around it</li>
               </ol>
-              <p className="text-xs text-amber-600 mt-2">
+              <p className="text-xs text-muted-foreground/70 mt-2">
                 Works on iOS Safari and Android Chrome. For best experience, use a well-lit room.
               </p>
             </div>
@@ -100,12 +100,12 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-amber-900 text-amber-200 py-6 px-4 mt-12">
+      <footer className="bg-secondary/30 border-t border-border py-6 px-4 mt-12">
         <div className="max-w-6xl mx-auto text-center text-sm">
-          <p>
+          <p className="text-muted-foreground">
             Explore the tabernacle as described in the Book of Exodus
           </p>
-          <p className="mt-2 text-amber-400">
+          <p className="mt-2 text-primary/70">
             Built with Next.js and Model-Viewer
           </p>
         </div>

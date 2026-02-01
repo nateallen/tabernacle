@@ -21,7 +21,7 @@ export default function InfoPanel({ item }: InfoPanelProps) {
       <CardHeader>
         <CardTitle className="text-2xl">{item.name}</CardTitle>
         {item.hebrewName && (
-          <CardDescription className="text-lg text-amber-700 font-medium" dir="rtl">
+          <CardDescription className="text-lg text-primary font-medium" dir="rtl">
             {item.hebrewName}
           </CardDescription>
         )}
@@ -31,7 +31,7 @@ export default function InfoPanel({ item }: InfoPanelProps) {
         <p className="text-muted-foreground leading-relaxed">{item.description}</p>
 
         <div className="flex items-center gap-2">
-          <Badge variant="secondary" className="bg-amber-100 text-amber-800">
+          <Badge variant="secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-3 w-3 mr-1"
@@ -44,7 +44,7 @@ export default function InfoPanel({ item }: InfoPanelProps) {
           </Badge>
         </div>
 
-        <div className="border-t pt-4 space-y-3">
+        <div className="border-t border-border pt-4 space-y-3">
           <h3 className="font-semibold text-foreground">Details</h3>
 
           <div>
@@ -79,7 +79,7 @@ export default function InfoPanel({ item }: InfoPanelProps) {
         </div>
       </CardContent>
 
-      <CardFooter className="text-xs text-muted-foreground border-t pt-4">
+      <CardFooter className="text-xs text-muted-foreground border-t border-border pt-4">
         3D Model: &quot;The Ark Of The Covenant&quot; by VHM777 (CC BY 4.0)
       </CardFooter>
     </Card>

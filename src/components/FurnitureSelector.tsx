@@ -28,13 +28,6 @@ export default function FurnitureSelector({
             disabled={!item.available}
             variant={selectedId === item.id ? "default" : "secondary"}
             size="sm"
-            className={
-              selectedId === item.id
-                ? "bg-amber-600 hover:bg-amber-700"
-                : item.available
-                ? "bg-amber-100 text-amber-800 hover:bg-amber-200"
-                : ""
-            }
           >
             {item.name}
             {!item.available && (
