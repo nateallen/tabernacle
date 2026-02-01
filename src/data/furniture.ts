@@ -37,7 +37,11 @@ export const tabernacleItems: TabernacleFurniture[] = [
     modelSrc: "/models/ark-of-the-covenant.glb",
     posterSrc: "/models/ark-of-the-covenant-poster.webp",
     available: true,
-    arScale: 0.0064, // 28% larger than 0.005
+    arScale: 0.0064,
+    variants: [
+      { id: "v1", name: "Version 1", modelSrc: "/models/ark-of-the-covenant.glb", arScale: 0.0064 },
+      { id: "v2", name: "Version 2", modelSrc: "/models/ark-of-the-covenant-2.glb", arScale: 0.0064 },
+    ],
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold rings", "Carrying poles"],
       dimensions: "2.5 cubits long × 1.5 cubits wide × 1.5 cubits high (~3.75 × 2.25 × 2.25 feet)",
