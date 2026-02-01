@@ -7,6 +7,8 @@ export interface TabernacleFurniture {
   modelSrc: string;
   posterSrc?: string;
   available: boolean;
+  /** Scale multiplier for AR display (adjusts real-world size) */
+  arScale?: number;
   details: {
     materials: string[];
     dimensions?: string;
@@ -26,6 +28,7 @@ export const tabernacleItems: TabernacleFurniture[] = [
     modelSrc: "/models/ark-of-the-covenant.glb",
     posterSrc: "/models/ark-of-the-covenant-poster.webp",
     available: true,
+    arScale: 0.5, // Adjust for real-world size (~3.75 feet long)
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold rings", "Carrying poles"],
       dimensions: "2.5 cubits long × 1.5 cubits wide × 1.5 cubits high (~3.75 × 2.25 × 2.25 feet)",

@@ -7,21 +7,29 @@ interface ARViewerProps {
   modelSrc: string;
   modelAlt: string;
   poster?: string;
+  /** Scale multiplier for the model (default: 1) */
+  scale?: number;
 }
 
-export default function ARViewer({ modelSrc, modelAlt, poster }: ARViewerProps) {
+export default function ARViewer({
+  modelSrc,
+  modelAlt,
+  poster,
+  scale = 1
+}: ARViewerProps) {
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (scriptLoaded && containerRef.current) {
-      // Force re-render of model-viewer after script loads
       const modelViewer = containerRef.current.querySelector("model-viewer");
       if (modelViewer) {
         modelViewer.setAttribute("src", modelSrc);
       }
     }
   }, [scriptLoaded, modelSrc]);
+
+  const scaleValue = `${scale} ${scale} ${scale}`;
 
   return (
     <>
@@ -41,6 +49,9 @@ export default function ARViewer({ modelSrc, modelAlt, poster }: ARViewerProps) 
                 alt="${modelAlt}"
                 ar
                 ar-modes="webxr scene-viewer quick-look"
+                ar-scale="fixed"
+                ar-placement="floor"
+                scale="${scaleValue}"
                 camera-controls
                 touch-action="pan-y"
                 shadow-intensity="1"
@@ -50,6 +61,9 @@ export default function ARViewer({ modelSrc, modelAlt, poster }: ARViewerProps) 
                 loading="eager"
                 environment-image="neutral"
                 exposure="1"
+                min-camera-orbit="auto auto 1m"
+                max-camera-orbit="auto auto 10m"
+                camera-orbit="0deg 75deg 3m"
                 style="width: 100%; height: 100%; background-color: transparent;"
               >
                 <button

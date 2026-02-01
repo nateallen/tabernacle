@@ -52,6 +52,7 @@ export default function Home() {
                 modelSrc={selectedItem.modelSrc}
                 modelAlt={selectedItem.name}
                 poster={selectedItem.posterSrc}
+                scale={selectedItem.arScale}
               />
             ) : (
               <div className="w-full h-[500px] md:h-[600px] bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl flex flex-col items-center justify-center text-gray-500">
