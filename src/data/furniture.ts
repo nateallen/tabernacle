@@ -108,7 +108,7 @@ export const tabernacleItems: TabernacleFurniture[] = [
     arScale: 0.85,
     variants: [
       { id: "v1", name: "Version 1", modelSrc: "/models/table-of-showbread.glb", arScale: 0.85 },
-      { id: "v2", name: "Version 2", modelSrc: "/models/table-of-showbread-2.glb", arScale: 0.85 },
+      { id: "v2", name: "Version 2", modelSrc: "/models/table-of-showbread-2.glb", arScale: 1.4 },
     ],
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold molding", "Carrying poles"],
