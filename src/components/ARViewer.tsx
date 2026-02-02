@@ -17,7 +17,13 @@ export default function ARViewer({
   poster,
   scale = 1
 }: ARViewerProps) {
-  const [scriptLoaded, setScriptLoaded] = useState(false);
+  // Check if model-viewer is already defined (script already loaded from previous navigation)
+  const [scriptLoaded, setScriptLoaded] = useState(() => {
+    if (typeof window !== "undefined") {
+      return customElements.get("model-viewer") !== undefined;
+    }
+    return false;
+  });
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
