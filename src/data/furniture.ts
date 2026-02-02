@@ -34,15 +34,10 @@ export const tabernacleItems: TabernacleFurniture[] = [
     description:
       "A gold-covered wooden chest containing the two stone tablets of the Ten Commandments, Aaron's rod, and a golden pot of manna.",
     biblicalReference: "Exodus 25:10-22",
-    modelSrc: "/models/ark-of-the-covenant-2.glb",
+    modelSrc: "/models/ark-of-the-covenant-3.glb",
     posterSrc: "/models/ark-of-the-covenant-poster.webp",
     available: true,
-    arScale: 0.85,
-    variants: [
-      { id: "v1", name: "Version 1", modelSrc: "/models/ark-of-the-covenant-2.glb", arScale: 0.85 },
-      { id: "v2", name: "Version 2", modelSrc: "/models/ark-of-the-covenant.glb", arScale: 0.0064 },
-      { id: "v3", name: "Version 3", modelSrc: "/models/ark-of-the-covenant-3.glb", arScale: 1.4 },
-    ],
+    arScale: 1.4,
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold rings", "Carrying poles"],
       dimensions: "2.5 cubits long × 1.5 cubits wide × 1.5 cubits high (~3.75 × 2.25 × 2.25 feet)",
