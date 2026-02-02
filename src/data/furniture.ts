@@ -95,8 +95,8 @@ export const tabernacleItems: TabernacleFurniture[] = [
     available: true,
     arScale: 0.85,
     variants: [
-      { id: "v1", name: "Version 1", modelSrc: "/models/golden-candlestick-2.glb", arScale: 0.77 },
-      { id: "v2", name: "Version 2", modelSrc: "/models/golden-candlestick.glb", arScale: 0.77 },
+      { id: "v1", name: "Version 1", modelSrc: "/models/golden-candlestick-2.glb", arScale: 0.70 },
+      { id: "v2", name: "Version 2", modelSrc: "/models/golden-candlestick.glb", arScale: 0.70 },
     ],
     details: {
       materials: ["Pure gold (one talent, ~75 pounds)"],
