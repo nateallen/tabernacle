@@ -103,14 +103,9 @@ export const tabernacleItems: TabernacleFurniture[] = [
     description:
       "A gold-covered table holding twelve loaves of bread representing the twelve tribes of Israel.",
     biblicalReference: "Exodus 25:23-30",
-    modelSrc: "/models/table-of-showbread.glb",
+    modelSrc: "/models/table-of-showbread-4.glb",
     available: true,
-    arScale: 0.85,
-    variants: [
-      { id: "v1", name: "Version 1", modelSrc: "/models/table-of-showbread.glb", arScale: 0.85 },
-      { id: "v2", name: "Version 2", modelSrc: "/models/table-of-showbread-2.glb", arScale: 1.4 },
-      { id: "v3", name: "Version 3", modelSrc: "/models/table-of-showbread-4.glb", arScale: 0.2 },
-    ],
+    arScale: 0.2,
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold molding", "Carrying poles"],
       dimensions: "2 cubits long × 1 cubit wide × 1.5 cubits high (~3 × 1.5 × 2.25 feet)",
