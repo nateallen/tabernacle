@@ -106,6 +106,10 @@ export const tabernacleItems: TabernacleFurniture[] = [
     modelSrc: "/models/table-of-showbread.glb",
     available: true,
     arScale: 0.85,
+    variants: [
+      { id: "v1", name: "Version 1", modelSrc: "/models/table-of-showbread.glb", arScale: 0.85 },
+      { id: "v2", name: "Version 2", modelSrc: "/models/table-of-showbread-2.glb", arScale: 0.85 },
+    ],
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold molding", "Carrying poles"],
       dimensions: "2 cubits long × 1 cubit wide × 1.5 cubits high (~3 × 1.5 × 2.25 feet)",
