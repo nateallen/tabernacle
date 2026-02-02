@@ -34,13 +34,13 @@ export const tabernacleItems: TabernacleFurniture[] = [
     description:
       "A gold-covered wooden chest containing the two stone tablets of the Ten Commandments, Aaron's rod, and a golden pot of manna.",
     biblicalReference: "Exodus 25:10-22",
-    modelSrc: "/models/ark-of-the-covenant.glb",
+    modelSrc: "/models/ark-of-the-covenant-2.glb",
     posterSrc: "/models/ark-of-the-covenant-poster.webp",
     available: true,
-    arScale: 0.0064,
+    arScale: 0.85,
     variants: [
-      { id: "v1", name: "Version 1", modelSrc: "/models/ark-of-the-covenant.glb", arScale: 0.0064 },
-      { id: "v2", name: "Version 2", modelSrc: "/models/ark-of-the-covenant-2.glb", arScale: 0.85 },
+      { id: "v1", name: "Version 1", modelSrc: "/models/ark-of-the-covenant-2.glb", arScale: 0.85 },
+      { id: "v2", name: "Version 2", modelSrc: "/models/ark-of-the-covenant.glb", arScale: 0.0064 },
     ],
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold rings", "Carrying poles"],
@@ -90,12 +90,12 @@ export const tabernacleItems: TabernacleFurniture[] = [
     description:
       "The seven-branched menorah that provided light in the Holy Place, beaten from a single piece of gold.",
     biblicalReference: "Exodus 25:31-40",
-    modelSrc: "/models/golden-candlestick.glb",
+    modelSrc: "/models/golden-candlestick-2.glb",
     available: true,
     arScale: 0.85,
     variants: [
-      { id: "v1", name: "Version 1", modelSrc: "/models/golden-candlestick.glb", arScale: 0.85 },
-      { id: "v2", name: "Version 2", modelSrc: "/models/golden-candlestick-2.glb", arScale: 0.85 },
+      { id: "v1", name: "Version 1", modelSrc: "/models/golden-candlestick-2.glb", arScale: 0.85 },
+      { id: "v2", name: "Version 2", modelSrc: "/models/golden-candlestick.glb", arScale: 0.85 },
     ],
     details: {
       materials: ["Pure gold (one talent, ~75 pounds)"],
