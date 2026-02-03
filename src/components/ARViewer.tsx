@@ -73,6 +73,7 @@ export default function ARViewer({
                 style="width: 100%; height: 100%; background-color: transparent;"
               >
                 <button
+                  type="button"
                   slot="ar-button"
                   style="
                     position: absolute;
