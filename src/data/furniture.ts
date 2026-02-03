@@ -105,7 +105,7 @@ export const tabernacleItems: TabernacleFurniture[] = [
     biblicalReference: "Exodus 25:23-30",
     modelSrc: "/models/table-of-showbread-5.glb",
     available: true,
-    arScale: 0.2,
+    arScale: 0.15,
     details: {
       materials: ["Acacia wood", "Pure gold overlay", "Gold molding", "Carrying poles"],
       dimensions: "2 cubits long × 1 cubit wide × 1.5 cubits high (~3 × 1.5 × 2.25 feet)",
